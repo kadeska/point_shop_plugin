@@ -8,7 +8,6 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.plugin.java.JavaPlugin;
 
 public class Shop {
 
@@ -21,7 +20,6 @@ public class Shop {
 		String command = event.getMessage();
 		if (command.equalsIgnoreCase("shop")) {
 			if (player.hasPermission("guishop.use") || player.isOp()) {
-
 				player.openInventory(myInv);
 
 			} else {
@@ -30,44 +28,21 @@ public class Shop {
 		}
 	}
 
-	public static Inventory myInv = Bukkit.createInventory(null, 27, "GUI Shop");
+	public static Inventory myInv = Bukkit.createInventory(null, 18, "GUI Shop Page01");
 
 	static {
 		// 10 items
-		myInv.setItem(0, new ItemStack(Material.WOOL, 1));
-		myInv.setItem(1, new ItemStack(Material.WOOD, 1));
-		myInv.setItem(2, new ItemStack(Material.WOOD, 1));
-		myInv.setItem(3, new ItemStack(Material.WOOD, 1));
-		myInv.setItem(4, new ItemStack(Material.WOOD, 1));
-		myInv.setItem(5, new ItemStack(Material.WOOD, 1));
-		myInv.setItem(6, new ItemStack(Material.WOOD, 1));
-		myInv.setItem(7, new ItemStack(Material.WOOD, 1));
-		myInv.setItem(8, new ItemStack(Material.WOOD, 1));
-		myInv.setItem(9, new ItemStack(Material.WOOD, 1));
-		// + 10 items
-		myInv.setItem(10, new ItemStack(Material.WOOL, 1));
-		myInv.setItem(11, new ItemStack(Material.WOOD, 1));
-		myInv.setItem(12, new ItemStack(Material.WOOD, 1));
-		myInv.setItem(13, new ItemStack(Material.WOOD, 1));
-		myInv.setItem(14, new ItemStack(Material.WOOD, 1));
-		myInv.setItem(15, new ItemStack(Material.WOOD, 1));
-		myInv.setItem(16, new ItemStack(Material.WOOD, 1));
-		myInv.setItem(17, new ItemStack(Material.WOOD, 1));
-		myInv.setItem(18, new ItemStack(Material.WOOD, 1));
-		myInv.setItem(19, new ItemStack(Material.WOOD, 1));
-		// + 10 items
-		/*
-		 * myInv.setItem(20, new ItemStack(Material.WOOL, 1)); myInv.setItem(21,
-		 * new ItemStack(Material.WOOD, 1)); myInv.setItem(22, new
-		 * ItemStack(Material.WOOD, 1)); myInv.setItem(23, new
-		 * ItemStack(Material.WOOD, 1)); myInv.setItem(24, new
-		 * ItemStack(Material.WOOD, 1)); myInv.setItem(25, new
-		 * ItemStack(Material.WOOD, 1)); myInv.setItem(26, new
-		 * ItemStack(Material.WOOD, 1)); myInv.setItem(27, new
-		 * ItemStack(Material.WOOD, 1)); myInv.setItem(28, new
-		 * ItemStack(Material.WOOD, 1)); myInv.setItem(29, new
-		 * ItemStack(Material.WOOD, 1));
-		 */
+		myInv.setItem(0, new ItemStack(Material.IRON_BOOTS, 1)); // 50
+		myInv.setItem(1, new ItemStack(Material.IRON_LEGGINGS, 1)); // 50
+		myInv.setItem(2, new ItemStack(Material.IRON_CHESTPLATE, 1)); // 50
+		myInv.setItem(3, new ItemStack(Material.IRON_HELMET, 1)); // 50
+		myInv.setItem(4, new ItemStack(Material.IRON_SWORD, 1)); // 70
+		myInv.setItem(5, new ItemStack(Material.IRON_AXE, 1)); // 40
+		myInv.setItem(6, new ItemStack(Material.IRON_PICKAXE, 1)); // 40
+		myInv.setItem(7, new ItemStack(Material.IRON_SPADE, 1)); // 40
+		myInv.setItem(8, new ItemStack(Material.IRON_HOE, 1)); // 40
+		myInv.setItem(9, new ItemStack(Material.PAPER, 1)); // go to next page
+
 	}
 
 	public void InventoryClick(InventoryClickEvent event) {
@@ -83,11 +58,16 @@ public class Shop {
 		Inventory inventory = event.getInventory();
 
 		if (inventory.getName().equals(myInv.getName())) {
-			if (Clicked.getType() == Material.WOOL) {
-				event.setCancelled(true);
-				player.closeInventory();
-				player.getInventory().addItem(new ItemStack(Material.WOOL, 1));
-				player.openInventory(myInv);
+			if (Clicked.getType() == Material.IRON_BOOTS) {
+				if (Managers.getScore(player) == 50) {
+					player.closeInventory();
+					player.getInventory().addItem(new ItemStack(Material.IRON_BOOTS, 1));
+					player.openInventory(myInv);
+				} else
+					// player.spigot().sendMessage(new TextComponent( "You do
+					// not have enough points! you need 50 points to buy this
+					// item!"));
+					event.setCancelled(true);
 
 			}
 			if (Clicked.getType() == Material.WOOD) {
@@ -97,6 +77,7 @@ public class Shop {
 				player.openInventory(myInv);
 
 			}
+
 		}
 	}
 
