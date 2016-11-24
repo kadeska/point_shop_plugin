@@ -32,7 +32,7 @@ public class Shop implements Listener, CommandExecutor {
 		int P3name = config.getInt("P3name:");
 		
 	}
-
+    @EventHandler
 	public void onCommand(PlayerCommandPreprocessEvent event) {
 		Player player = event.getPlayer();
 		String command = event.getMessage();
