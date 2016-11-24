@@ -16,6 +16,7 @@ public class Main extends JavaPlugin {
 	public void onEnable() {
 		plugin = this;
 		saveDefaultConfig();
+		getCommand("shop").setExecutor(new Shop());
 
 		ConsoleCommandSender console = getServer().getConsoleSender();
 

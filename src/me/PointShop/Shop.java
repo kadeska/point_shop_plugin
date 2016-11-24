@@ -2,6 +2,9 @@ package me.PointShop;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -11,7 +14,7 @@ import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-public class Shop implements Listener {
+public class Shop implements Listener, CommandExecutor {
 
 
 	public void onEnable() {
@@ -188,6 +191,12 @@ public class Shop implements Listener {
 
 	public void onDisable() {
 		Main.getPlugin().saveConfig();
+	}
+
+	@Override
+	public boolean onCommand(CommandSender arg0, Command arg1, String arg2, String[] arg3) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }
