@@ -28,6 +28,7 @@ public class Main extends JavaPlugin {
 	public void registerEvents() {
 		pm.registerEvents(new EntityDeathListener(), this);
 		pm.registerEvents(new PlayerJoinListener(), this);
+		pm.registerEvents(new Shop(), this);
 	}
 
 	public void onDisable() {
