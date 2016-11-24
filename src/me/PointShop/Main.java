@@ -14,6 +14,7 @@ public class Main extends JavaPlugin {
 	}
 
 	public void onEnable() {
+		registerEvents();
 		plugin = this;
 		saveDefaultConfig();
 		getCommand("shop").setExecutor(new Shop());
@@ -22,10 +23,11 @@ public class Main extends JavaPlugin {
 
 		console.sendMessage(ChatColor.RED + "GUI Shop has been enabled");
 
+	}
+	public void registerEvents() {
 		pm.registerEvents(new EntityDeathListener(), this);
 		pm.registerEvents(new PlayerJoinListener(), this);
 		pm.registerEvents(new Shop(), this);
-
 	}
 
 	PluginManager pm = Bukkit.getPluginManager();
