@@ -6,10 +6,10 @@ public class Managers {
 
 	public static void addScore(Player p, int i) {
 		if (!Main.getPlugin().getConfig().contains("Players." + p.getName())) {
-			Main.getPlugin().getConfig().set("Players." + p.getName() + ".Score", i++);
+			Main.getPlugin().getConfig().set("Players." + p.getName() + ".Score", 0);
 			Main.getPlugin().saveConfig();
 		} else {
-			Main.getPlugin().getConfig().set("players." + p.getName() + ".Score", 0);
+			Main.getPlugin().getConfig().set("players." + p.getName() + ".Score", i++);
 		}
 	}
 
@@ -19,10 +19,10 @@ public class Managers {
 
 	public static void removeScore(Player p, int i) {
 		if (!Main.getPlugin().getConfig().contains("Players." + p.getName())) {
-			Main.getPlugin().getConfig().set("Players." + p.getName() + ".Score", i--);
+			Main.getPlugin().getConfig().set("Players." + p.getName() + ".Score", 0);
 			Main.getPlugin().saveConfig();
 		} else {
-			Main.getPlugin().getConfig().set("players." + p.getName() + ".Score", 0);
+			Main.getPlugin().getConfig().set("players." + p.getName() + ".Score", i--);
 		}
 	}
 

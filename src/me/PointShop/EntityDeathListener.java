@@ -13,10 +13,18 @@ public class EntityDeathListener implements Listener {
 
 		Player p = e.getEntity().getKiller();
 
-		if (e.getEntity().getType() != EntityType.PLAYER) {
-			if (e.getEntity().getKiller() instanceof Player) {
-				Managers.addScore(p, 1);
-			}
+		// if the entity that died is not a player and the entity killer is a
+		// player then add one to score
+		if (e.getEntity().getType() != EntityType.PLAYER && e.getEntity().getKiller() instanceof Player) {
+			Managers.addScore(p, 1);
+
+		}
+
+		// if the entity that died is a player and the entity killer is a
+		// player then remove one from score
+		if (e.getEntity().getType() == EntityType.PLAYER && e.getEntity().getKiller() instanceof Player) {
+			Managers.removeScore(p, 1);
+
 		}
 
 	}
