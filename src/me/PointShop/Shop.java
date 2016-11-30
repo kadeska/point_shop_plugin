@@ -15,19 +15,10 @@ import org.bukkit.inventory.ItemStack;
 
 public class Shop implements Listener, CommandExecutor {
 
-	public void onEnable() {
-		Main.getPlugin().saveConfig();
-	}
-
-	public void onDisable() {
-		Main.getPlugin().saveConfig();
-	}
-
 	@EventHandler
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
 		if (!(sender instanceof Player)) {
 			sender.sendMessage("You must be a player to use this cammand!");
-			return false;
 		}
 		Player player = (Player) sender;
 		myInv1.addItem(ironboots, ironleggings, ironhelmet, ironsword, ironaxe, ironpickaxe, ironspade, ironhoe, paper);
@@ -35,9 +26,8 @@ public class Shop implements Listener, CommandExecutor {
 		if (cmd.getName().equalsIgnoreCase("shop")) {
 			if (player.hasPermission("guishop.use") || player.isOp()) {
 				player.openInventory(myInv1);
-				return true;
 			} else {
-				sender.sendMessage("You do not have permisstion to use this cammand!");
+				sender.sendMessage("You do not have permission to use this cammand!");
 			}
 		}
 		return true;
