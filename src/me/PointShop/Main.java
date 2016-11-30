@@ -7,7 +7,9 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin {
+	
 	private static Main plugin;
+	PluginManager pm = Bukkit.getPluginManager();
 
 	public static Main getPlugin() {
 		return plugin;
@@ -19,27 +21,16 @@ public class Main extends JavaPlugin {
 		plugin = this;
 		saveDefaultConfig();
 		getCommand("shop").setExecutor(new Shop());
-
-		ConsoleCommandSender console = getServer().getConsoleSender();
-
-		console.sendMessage(ChatColor.RED + "GUI Shop has been enabled");
-
 	}
+	
 	public void registerEvents() {
 		pm.registerEvents(new EntityDeathListener(), this);
 		pm.registerEvents(new PlayerJoinListener(), this);
 		pm.registerEvents(new Shop(), this);
 	}
 
-	PluginManager pm = Bukkit.getPluginManager();
-
 	public void onDisable() {
 		saveConfig();
-
-		ConsoleCommandSender console = getServer().getConsoleSender();
-
-		console.sendMessage(ChatColor.RED + "GUI Shop has been disabled");
-
 	}
 
 }
