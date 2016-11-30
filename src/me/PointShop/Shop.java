@@ -36,10 +36,8 @@ public class Shop implements Listener, CommandExecutor {
 			if (player.hasPermission("guishop.use") || player.isOp()) {
 				player.openInventory(myInv1);
 				return true;
-
 			} else {
 				sender.sendMessage("You do not have permisstion to use this cammand!");
-
 			}
 		}
 		return true;
