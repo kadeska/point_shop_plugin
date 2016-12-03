@@ -1,6 +1,0 @@
-main: Main
-name: GUI shop
-version: 1.0
-commands:
-  shop:
-    description: Pops up the shop gui!
