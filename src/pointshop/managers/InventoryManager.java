@@ -32,8 +32,8 @@ public class InventoryManager {
         ItemStack ironSpade = new ItemStack(Material.IRON_SPADE); // 40 points
         ItemStack ironHoe = new ItemStack(Material.IRON_HOE); // 40 points
 
-        //I commented this one out as I did not see any other pages.
         //ItemStack paper = new ItemStack(Material.PAPER, 1); // go to next page
+        // TODO: add 2nd page
 
         //Now let's add all our itemStack to the shopInv.
         shopInv.addItem(ironBoots, ironLeggings, ironHelmet, ironSword, ironAxe, ironPickaxe, ironSpade, ironHoe);

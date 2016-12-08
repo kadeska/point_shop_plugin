@@ -5,20 +5,19 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
 import pointshop.Main;
 
-public class ShopCmd implements CommandExecutor, Listener {
+public class ShopCmd implements CommandExecutor, Listener{
 
 	private Main plugin;
 
-	public ShopCmd(Main plugin) {
+	public ShopCmd() {
 		this.plugin = plugin; // Accessing Main class instance
 	}
 
-	@EventHandler
+
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
 		if (cmd.getName().equalsIgnoreCase("shop")) {
 			if (!(sender instanceof Player)) {
