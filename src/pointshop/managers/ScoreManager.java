@@ -6,13 +6,10 @@ import pointshop.Main;
 public class ScoreManager {
 
 	private static Main plugin;
-	public ScoreManager(Main plugin) {
-		this.plugin = plugin; //Accessing the instance of the Main class
-	}
 
-	/*
-	All of it does not need to be static as it results in static abuse.
-	 */
+	public ScoreManager(Main plugin) {
+		this.plugin = plugin; // Accessing the instance of the Main class
+	}
 
 	public static void addScore(Player p, int i) {
 		if (!plugin.getConfig().contains("Players." + p.getName() + p.getUniqueId())) {
