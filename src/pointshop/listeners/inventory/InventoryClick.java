@@ -39,7 +39,7 @@ public class InventoryClick implements Listener {
 				switch (e.getCurrentItem().getType()) {
 
 				case IRON_BOOTS:
-					if (canBuy(50)) {
+					if (canBuy(player, 50)) {
 						player.closeInventory();
 						player.getInventory().addItem(new ItemStack(Material.IRON_BOOTS));
 						player.openInventory(plugin.getInventoryManager().getShopInv());
@@ -51,7 +51,7 @@ public class InventoryClick implements Listener {
 					break;
 
 				case IRON_LEGGINGS:
-					if (canBuy(50)) {
+					if (canBuy(player, 50)) {
 						player.closeInventory();
 						player.getInventory().addItem(new ItemStack(Material.IRON_LEGGINGS));
 						player.openInventory(plugin.getInventoryManager().getShopInv());
@@ -60,7 +60,7 @@ public class InventoryClick implements Listener {
 								// can safely execute the coder under.
 					}
 				case IRON_HELMET:
-					if (canBuy(50)) {
+					if (canBuy(player, 50)) {
 						player.closeInventory();
 						player.getInventory().addItem(new ItemStack(Material.IRON_HELMET));
 						player.openInventory(plugin.getInventoryManager().getShopInv());
@@ -69,7 +69,7 @@ public class InventoryClick implements Listener {
 								// can safely execute the coder under.
 					}
 				case IRON_SWORD:
-					if (canBuy(50)) {
+					if (canBuy(player, 50)) {
 						player.closeInventory();
 						player.getInventory().addItem(new ItemStack(Material.IRON_SWORD));
 						player.openInventory(plugin.getInventoryManager().getShopInv());
@@ -78,7 +78,7 @@ public class InventoryClick implements Listener {
 								// can safely execute the coder under.
 					}
 				case IRON_AXE:
-					if (canBuy(70)) {
+					if (canBuy(player, 70)) {
 						player.closeInventory();
 						player.getInventory().addItem(new ItemStack(Material.IRON_AXE));
 						player.openInventory(plugin.getInventoryManager().getShopInv());
@@ -87,7 +87,7 @@ public class InventoryClick implements Listener {
 								// can safely execute the coder under.
 					}
 				case IRON_PICKAXE:
-					if (canBuy(40)) {
+					if (canBuy(player, 40)) {
 						player.closeInventory();
 						player.getInventory().addItem(new ItemStack(Material.IRON_PICKAXE));
 						player.openInventory(plugin.getInventoryManager().getShopInv());
@@ -96,7 +96,7 @@ public class InventoryClick implements Listener {
 								// can safely execute the coder under.
 					}
 				case IRON_SPADE:
-					if (canBuy(40)) {
+					if (canBuy(player, 40)) {
 						player.closeInventory();
 						player.getInventory().addItem(new ItemStack(Material.IRON_SPADE));
 						player.openInventory(plugin.getInventoryManager().getShopInv());
@@ -105,7 +105,7 @@ public class InventoryClick implements Listener {
 								// can safely execute the coder under.
 					}
 				case IRON_HOE:
-					if (canBuy(40)) {
+					if (canBuy(player, 40)) {
 						player.closeInventory();
 						player.getInventory().addItem(new ItemStack(Material.IRON_HOE));
 						player.openInventory(plugin.getInventoryManager().getShopInv());
@@ -123,8 +123,8 @@ public class InventoryClick implements Listener {
 		}
 	}
 
-	private boolean canBuy(int cost) {
-		if (pointshop.managers.ScoreManager.getScore(null) >= cost) {
+	private boolean canBuy(Player player, int cost) {
+		if (pointshop.managers.ScoreManager.getScore(player) >= cost) {
 			return true;
 		}
 		return false;
