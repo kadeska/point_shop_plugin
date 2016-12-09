@@ -13,7 +13,7 @@ public class ShopCmd implements CommandExecutor, Listener{
 
 	private Main plugin;
 
-	public ShopCmd() {
+	public ShopCmd(Main plugin) {
 		this.plugin = plugin; // Accessing Main class instance
 	}
 

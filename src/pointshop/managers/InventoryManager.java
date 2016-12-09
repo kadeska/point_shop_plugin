@@ -43,5 +43,4 @@ public class InventoryManager {
     public Inventory getShopInv() {
         return shopInv;
     }
-
 }

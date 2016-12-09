@@ -28,7 +28,7 @@ public class Main extends JavaPlugin {
 		registerListeners();
 
 		saveDefaultConfig();
-		getCommand("shop").setExecutor(new ShopCmd());
+		getCommand("shop").setExecutor(new ShopCmd(this));
 
 		ConsoleCommandSender console = getServer().getConsoleSender();
 		console.sendMessage(ChatColor.RED + "GUI Shop has been enabled");
@@ -49,7 +49,7 @@ public class Main extends JavaPlugin {
 	private void registerListeners() {
 		pm.registerEvents(new InventoryClick(this), this);
 		pm.registerEvents(new PlayerJoin(this), this);
-		pm.registerEvents(new ShopCmd(), this);
+		pm.registerEvents(new ShopCmd(this), this);
 		pm.registerEvents(new EntityDeath(), this);
 
 	}
