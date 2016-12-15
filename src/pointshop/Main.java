@@ -44,8 +44,6 @@ public class Main extends JavaPlugin {
 		console.sendMessage(ChatColor.RED + "GUI Shop has been disabled");
 
 	}
-
-	// Does not need to be public
 	private void registerListeners() {
 		pm.registerEvents(new InventoryClick(this), this);
 		pm.registerEvents(new PlayerJoin(this), this);
