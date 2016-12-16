@@ -18,8 +18,8 @@ public class PlayerJoin implements Listener {
 
 		Player p = e.getPlayer();
 
-		if (!plugin.getConfig().contains("Players." + p.getName())) {
-			plugin.getConfig().set("players." + p.getName() + ".Score", 0);
+		if (!plugin.getConfig().contains("Players." + p.getName() + ".UUID" + p.getUniqueId() + ".Score")) {
+			plugin.getConfig().set("Players." + p.getName() + ".UUID" + p.getUniqueId() + ".Score", 0);
 			plugin.saveConfig();
 
 		}
