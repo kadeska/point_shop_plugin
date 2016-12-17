@@ -10,6 +10,7 @@ import pointshop.listeners.inventory.InventoryClick;
 import pointshop.listeners.player.PlayerJoin;
 import pointshop.managers.InventoryManager;
 import pointshop.managers.ScoreManager;
+import pointshop.utils.SettingsManager;
 import pointshop.commands.ShopCmd;
 
 
@@ -19,11 +20,13 @@ public class Main extends JavaPlugin {
 
 	private ScoreManager scoreManager;
 	private InventoryManager inventoryManager;
+	private SettingsManager settingsManager;
 
 	// Must indicate that we are overriding the method "onEnable" from the super
 	// class.
 	@Override
 	public void onEnable() {
+		settingsManager.setup();
 		initiateManagers();
 		registerListeners();
 
@@ -31,17 +34,20 @@ public class Main extends JavaPlugin {
 		getCommand("shop").setExecutor(new ShopCmd(this));
 
 		ConsoleCommandSender console = getServer().getConsoleSender();
-		console.sendMessage(ChatColor.RED + "GUI Shop has been enabled");
+		console.sendMessage(ChatColor.GREEN + "GUI Shop has been enabled");
 
 	}
 
 	@Override
 	public void onDisable() {
+		settingsManager.saveData();
+		settingsManager.saveConfig();
+		
 		saveConfig();
 
 		ConsoleCommandSender console = getServer().getConsoleSender();
 
-		console.sendMessage(ChatColor.RED + "GUI Shop has been disabled");
+		console.sendMessage(ChatColor.GREEN + "GUI Shop has been disabled");
 
 	}
 	private void registerListeners() {
