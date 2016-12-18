@@ -13,7 +13,6 @@ import pointshop.managers.ScoreManager;
 import pointshop.utils.SettingsManager;
 import pointshop.commands.ShopCmd;
 
-
 public class Main extends JavaPlugin {
 
 	private PluginManager pm = getServer().getPluginManager();
@@ -42,7 +41,7 @@ public class Main extends JavaPlugin {
 	public void onDisable() {
 		settingsManager.saveData();
 		settingsManager.saveConfig();
-		
+
 		saveConfig();
 
 		ConsoleCommandSender console = getServer().getConsoleSender();
@@ -50,6 +49,7 @@ public class Main extends JavaPlugin {
 		console.sendMessage(ChatColor.GREEN + "GUI Shop has been disabled");
 
 	}
+
 	private void registerListeners() {
 		pm.registerEvents(new InventoryClick(this), this);
 		pm.registerEvents(new PlayerJoin(this), this);
@@ -60,7 +60,7 @@ public class Main extends JavaPlugin {
 
 	// In this method we will initiate all our managers.
 	private void initiateManagers() {
-		scoreManager = new ScoreManager(this); // 'this' means this class
+		//scoreManager = new ScoreManager(this); // 'this' means this class
 		inventoryManager = new InventoryManager(this);
 	}
 
@@ -73,5 +73,11 @@ public class Main extends JavaPlugin {
 	public InventoryManager getInventoryManager() {
 		return inventoryManager;
 	}
+
+	public SettingsManager getSettingsManager() {
+		return settingsManager;
+	}
+
+	
 
 }

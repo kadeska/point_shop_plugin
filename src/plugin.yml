@@ -1,5 +1,5 @@
 main: pointshop.Main
-name: GUI shop
+name: GUIshop
 version: 1.0
 commands:
   shop:

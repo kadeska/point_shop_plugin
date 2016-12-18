@@ -5,6 +5,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import pointshop.Main;
+import pointshop.utils.SettingsManager;
 
 public class PlayerJoin implements Listener {
 
@@ -17,12 +18,11 @@ public class PlayerJoin implements Listener {
 	public void onJoin(PlayerJoinEvent e) {
 
 		Player p = e.getPlayer();
-
-		if (!plugin.getConfig().contains("Players." + p.getName() + ".UUID" + p.getUniqueId() + ".Score")) {
-			plugin.getConfig().set("Players." + p.getName() + ".UUID" + p.getUniqueId() + ".Score", 0);
-			plugin.saveConfig();
-
-		}
+		String playername = p.getName();
+		
+		SettingsManager.loadPlayerdata(playername, p);
+		
+		
 	}
 
 }

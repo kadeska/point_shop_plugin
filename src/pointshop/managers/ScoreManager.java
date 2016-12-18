@@ -5,9 +5,19 @@ import org.bukkit.entity.Player;
 import pointshop.Main;
 import pointshop.utils.SettingsManager;
 
-public class ScoreManager {
+public class ScoreManager extends SettingsManager{
+	public ScoreManager(File dfile, String playername) {
+		super(dfile, playername);
+		// TODO Auto-generated constructor stub
+	}
+
 	private static Main plugin;
 	private SettingsManager settingsManager;
+	
+	public SettingsManager settingsManager() {
+		return settingsManager;
+	}
+	
 
 	public static void addScore(Player p, int i) {
 		int score = plugin.getConfig().getInt("Players." + p.getUniqueId() + ".Score");
@@ -39,7 +49,7 @@ public class ScoreManager {
 		return settingsManager.dfile;
 	}
 
-	public ScoreManager(Main plugin) {
-		ScoreManager.plugin = plugin;
-	}
+	//public ScoreManager(Main plugin) {
+		//ScoreManager.plugin = plugin;
+	//}
 }
