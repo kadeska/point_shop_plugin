@@ -21,16 +21,20 @@ public class SettingsManager {
 	public File dfile;
 
 	public void setup() {
+		data = YamlConfiguration.loadConfiguration(dfile);
+
 		cfile = new File(p.getDataFolder(), "config.yml");
+		dfile = new File(p.getDataFolder(), "data.yml");
+
 		config = p.getConfig();
 		// config.options().copyDefaults(true);
 		// saveConfig();
 
 		if (!p.getDataFolder().exists()) {
 			p.getDataFolder().mkdir();
+
 		}
 
-		dfile = new File(p.getDataFolder(), "data.yml");
 		if (!dfile.exists()) {
 			try {
 				dfile.createNewFile();
@@ -38,8 +42,6 @@ public class SettingsManager {
 				Bukkit.getServer().getLogger().severe(ChatColor.RED + "Could not create data.yml!");
 			}
 		}
-
-		data = YamlConfiguration.loadConfiguration(dfile);
 	}
 
 	public FileConfiguration getData() {
@@ -76,11 +78,5 @@ public class SettingsManager {
 
 	public PluginDescriptionFile getDesc() {
 		return p.getDescription();
-	}
-	
-	static SettingsManager instance = new SettingsManager();
-
-	public static SettingsManager getInstance() {
-		return instance;
 	}
 }
