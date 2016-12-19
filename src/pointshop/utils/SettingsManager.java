@@ -12,10 +12,12 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginDescriptionFile;
 
+import pointshop.Main;
+
 public class SettingsManager {
 
-	private YamlConfiguration SettingsManager;
 	private String Playername;
+	YamlConfiguration SettingsManager = new YamlConfiguration();
 
 	FileConfiguration data;
 	FileConfiguration config;
@@ -24,17 +26,13 @@ public class SettingsManager {
 	public File dfile;
 
 	Plugin p;
-	
+
 	public static HashMap<Player, File> playerDataMap = new HashMap<Player, File>();
-	
 
 	public SettingsManager(File dfile, String playername) {
-		SettingsManager = new YamlConfiguration();
 		Playername = playername;
 
 	}
-	
-	
 
 	public boolean setup() {
 		data = YamlConfiguration.loadConfiguration(dfile);
@@ -50,7 +48,7 @@ public class SettingsManager {
 			if (!dfile.exists()) {
 				dfile.createNewFile();
 				p.getLogger().info("New Playerdata file created for " + Playername);
-				
+
 			}
 
 			if (!p.getDataFolder().exists()) {
@@ -59,13 +57,10 @@ public class SettingsManager {
 
 		} catch (IOException e) {
 			p.getLogger().severe(ChatColor.RED + "Could not create data.yml!");
-			//Bukkit.getServer().getLogger().severe(ChatColor.RED + "Could not create data.yml!");
 			e.getMessage();
 		}
 		return true;
 	}
-	
-	
 
 	public FileConfiguration getData() {
 		return data;
@@ -104,7 +99,12 @@ public class SettingsManager {
 	public PluginDescriptionFile getDesc() {
 		return p.getDescription();
 	}
-	
+
+	 public SettingsManager(Main plugin) {
+	        this.p = plugin;
+	        setup(); //This will be ran onEnable
+	    }
+
 	public static void loadPlayerdata(String playername, Player p) {
 		File dir = new File(Bukkit.getPluginManager().getPlugin("GUIshop").getDataFolder() + "/playerdata");
 		if (!dir.exists())
@@ -112,14 +112,13 @@ public class SettingsManager {
 		File file = new File(dir, playername + ".yml");
 		SettingsManager playerdata = new SettingsManager(file, playername);
 		if (!playerdata.setup()) {
-			throw new IllegalStateException("The player data file for player " + playername + " was not loaded correctly.");
-			
-		}else{
-			playerDataMap.put(p, file);
-			
-		}
+			throw new IllegalStateException(
+					"The player data file for player " + playername + " was not loaded correctly.");
 
-	
+		} else {
+			playerDataMap.put(p, file);
+
+		}
 
 	}
 }

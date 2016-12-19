@@ -20,12 +20,14 @@ public class Main extends JavaPlugin {
 	private ScoreManager scoreManager;
 	private InventoryManager inventoryManager;
 	private SettingsManager settingsManager;
+	
+
+	
 
 	// Must indicate that we are overriding the method "onEnable" from the super
 	// class.
 	@Override
 	public void onEnable() {
-		settingsManager.setup();
 		initiateManagers();
 		registerListeners();
 
@@ -60,8 +62,10 @@ public class Main extends JavaPlugin {
 
 	// In this method we will initiate all our managers.
 	private void initiateManagers() {
-		//scoreManager = new ScoreManager(this); // 'this' means this class
+		// scoreManager = new ScoreManager(this); // 'this' means this class
 		inventoryManager = new InventoryManager(this);
+		settingsManager = new SettingsManager(this);
+		
 	}
 
 	// This is where we will make our getter methods to get our managers and use
@@ -77,7 +81,5 @@ public class Main extends JavaPlugin {
 	public SettingsManager getSettingsManager() {
 		return settingsManager;
 	}
-
-	
 
 }
