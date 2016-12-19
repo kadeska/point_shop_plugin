@@ -33,9 +33,8 @@ public class SettingsManager {
 		Playername = playername;
 
 	}
-
-	// public static HashMap<PlayerName, dfile> PlayerDataFile = new
-	// HashMap<Player, dfile>();
+	
+	
 
 	public boolean setup() {
 		data = YamlConfiguration.loadConfiguration(dfile);
@@ -59,11 +58,14 @@ public class SettingsManager {
 			}
 
 		} catch (IOException e) {
-			Bukkit.getServer().getLogger().severe(ChatColor.RED + "Could not create data.yml!");
+			p.getLogger().severe(ChatColor.RED + "Could not create data.yml!");
+			//Bukkit.getServer().getLogger().severe(ChatColor.RED + "Could not create data.yml!");
 			e.getMessage();
 		}
 		return true;
 	}
+	
+	
 
 	public FileConfiguration getData() {
 		return data;
@@ -102,7 +104,7 @@ public class SettingsManager {
 	public PluginDescriptionFile getDesc() {
 		return p.getDescription();
 	}
-
+	
 	public static void loadPlayerdata(String playername, Player p) {
 		File dir = new File(Bukkit.getPluginManager().getPlugin("GUIshop").getDataFolder() + "/playerdata");
 		if (!dir.exists())
@@ -116,6 +118,8 @@ public class SettingsManager {
 			playerDataMap.put(p, file);
 			
 		}
+
+	
 
 	}
 }

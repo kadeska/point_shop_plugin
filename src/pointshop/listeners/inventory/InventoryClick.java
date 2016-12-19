@@ -20,104 +20,111 @@ public class InventoryClick implements Listener {
 
 	@EventHandler
 	public void onInvClick(InventoryClickEvent e) {
+		Player player = (Player) e.getWhoClicked();
 
-		// Here we first check if the correct inventory was clicked.
-		if (e.getInventory().getTitle().contains("GUI Shop")) {
+		if (!e.getInventory().getTitle().contains("GUI Shop")) {
+			e.setCancelled(true);
 
-			// Here we make sure they are clicking an item and not a empty item
-			// or if they are clicking NULL.
-			if (e.getCurrentItem().getType() != Material.AIR || e.getCurrentItem() != null) {
-
-				// We can safely cancel the event right here since, we know they
-				// are clicking an item inside the inventory "GUI Shop".
+			if (e.getCurrentItem().getType() == Material.AIR) {
 				e.setCancelled(true);
 
-				Player player = (Player) e.getWhoClicked();
+				if (e.getCurrentItem() == null) {
+					e.setCancelled(true);
 
-				// Instead of using all those if statement and make it ugly, we
-				// will just use a switch statement.
-				switch (e.getCurrentItem().getType()) {
+					switch (e.getCurrentItem().getType()) {
 
-				case IRON_BOOTS:
-					if (canBuy(player, 50)) {
-						player.closeInventory();
-						player.getInventory().addItem(new ItemStack(Material.IRON_BOOTS));
-						player.openInventory(plugin.getInventoryManager().getShopInv());
-						pointshop.managers.ScoreManager.removeScore(player, 50);
-						break; // We break outside of the statement here so we
-								// can safely execute the coder under.
-					}
-					player.sendMessage(ChatColor.RED + "You do not have enough points to buy this item");
-					break;
+					case IRON_BOOTS:
+						if (!canBuy(player, 50)) {
+							player.closeInventory();
+							player.getInventory().addItem(new ItemStack(Material.IRON_BOOTS));
+							player.openInventory(plugin.getInventoryManager().getShopInv());
+							pointshop.managers.ScoreManager.removeScore(player, 50);
+							break; // We break outside of the statement here so
+									// we
+									// can safely execute the coder under.
+						}
+						player.sendMessage(ChatColor.RED + "You do not have enough points to buy this item");
+					case IRON_LEGGINGS:
+						if (canBuy(player, 50)) {
+							player.closeInventory();
+							player.getInventory().addItem(new ItemStack(Material.IRON_LEGGINGS));
+							player.openInventory(plugin.getInventoryManager().getShopInv());
+							pointshop.managers.ScoreManager.removeScore(player, 50);
+							break; // We break outside of the statement here so
+									// we
+									// can safely execute the coder under.
+						}
+						player.sendMessage(ChatColor.RED + "You do not have enough points to buy this item");
+					case IRON_HELMET:
+						if (canBuy(player, 50)) {
+							player.closeInventory();
+							player.getInventory().addItem(new ItemStack(Material.IRON_HELMET));
+							player.openInventory(plugin.getInventoryManager().getShopInv());
+							pointshop.managers.ScoreManager.removeScore(player, 50);
+							break; // We break outside of the statement here so
+									// we
+									// can safely execute the coder under.
+						}
+						player.sendMessage(ChatColor.RED + "You do not have enough points to buy this item");
+					case IRON_SWORD:
+						if (canBuy(player, 50)) {
+							player.closeInventory();
+							player.getInventory().addItem(new ItemStack(Material.IRON_SWORD));
+							player.openInventory(plugin.getInventoryManager().getShopInv());
+							pointshop.managers.ScoreManager.removeScore(player, 50);
+							break; // We break outside of the statement here so
+									// we
+									// can safely execute the coder under.
+						}
+						player.sendMessage(ChatColor.RED + "You do not have enough points to buy this item");
+					case IRON_AXE:
+						if (canBuy(player, 70)) {
+							player.closeInventory();
+							player.getInventory().addItem(new ItemStack(Material.IRON_AXE));
+							player.openInventory(plugin.getInventoryManager().getShopInv());
+							pointshop.managers.ScoreManager.removeScore(player, 70);
+							break; // We break outside of the statement here so
+									// we
+									// can safely execute the coder under.
+						}
+						player.sendMessage(ChatColor.RED + "You do not have enough points to buy this item");
+					case IRON_PICKAXE:
+						if (canBuy(player, 40)) {
+							player.closeInventory();
+							player.getInventory().addItem(new ItemStack(Material.IRON_PICKAXE));
+							player.openInventory(plugin.getInventoryManager().getShopInv());
+							pointshop.managers.ScoreManager.removeScore(player, 40);
+							break; // We break outside of the statement here so
+									// we
+									// can safely execute the coder under.
+						}
+						player.sendMessage(ChatColor.RED + "You do not have enough points to buy this item");
+					case IRON_SPADE:
+						if (canBuy(player, 40)) {
+							player.closeInventory();
+							player.getInventory().addItem(new ItemStack(Material.IRON_SPADE));
+							player.openInventory(plugin.getInventoryManager().getShopInv());
+							pointshop.managers.ScoreManager.removeScore(player, 40);
+							break; // We break outside of the statement here so
+									// we
+									// can safely execute the coder under.
+						}
+						player.sendMessage(ChatColor.RED + "You do not have enough points to buy this item");
+					case IRON_HOE:
+						if (canBuy(player, 40)) {
+							player.closeInventory();
+							player.getInventory().addItem(new ItemStack(Material.IRON_HOE));
+							player.openInventory(plugin.getInventoryManager().getShopInv());
+							pointshop.managers.ScoreManager.removeScore(player, 40);
+							break; // We break outside of the statement here so
+									// we
+									// can safely execute the coder under.
+						}
+						player.sendMessage(ChatColor.RED + "You do not have enough points to buy this item");
+					default:
+						break;
 
-				case IRON_LEGGINGS:
-					if (canBuy(player, 50)) {
-						player.closeInventory();
-						player.getInventory().addItem(new ItemStack(Material.IRON_LEGGINGS));
-						player.openInventory(plugin.getInventoryManager().getShopInv());
-						pointshop.managers.ScoreManager.removeScore(player, 50);
-						break; // We break outside of the statement here so we
-								// can safely execute the coder under.
 					}
-				case IRON_HELMET:
-					if (canBuy(player, 50)) {
-						player.closeInventory();
-						player.getInventory().addItem(new ItemStack(Material.IRON_HELMET));
-						player.openInventory(plugin.getInventoryManager().getShopInv());
-						pointshop.managers.ScoreManager.removeScore(player, 50);
-						break; // We break outside of the statement here so we
-								// can safely execute the coder under.
-					}
-				case IRON_SWORD:
-					if (canBuy(player, 50)) {
-						player.closeInventory();
-						player.getInventory().addItem(new ItemStack(Material.IRON_SWORD));
-						player.openInventory(plugin.getInventoryManager().getShopInv());
-						pointshop.managers.ScoreManager.removeScore(player, 50);
-						break; // We break outside of the statement here so we
-								// can safely execute the coder under.
-					}
-				case IRON_AXE:
-					if (canBuy(player, 70)) {
-						player.closeInventory();
-						player.getInventory().addItem(new ItemStack(Material.IRON_AXE));
-						player.openInventory(plugin.getInventoryManager().getShopInv());
-						pointshop.managers.ScoreManager.removeScore(player, 70);
-						break; // We break outside of the statement here so we
-								// can safely execute the coder under.
-					}
-				case IRON_PICKAXE:
-					if (canBuy(player, 40)) {
-						player.closeInventory();
-						player.getInventory().addItem(new ItemStack(Material.IRON_PICKAXE));
-						player.openInventory(plugin.getInventoryManager().getShopInv());
-						pointshop.managers.ScoreManager.removeScore(player, 40);
-						break; // We break outside of the statement here so we
-								// can safely execute the coder under.
-					}
-				case IRON_SPADE:
-					if (canBuy(player, 40)) {
-						player.closeInventory();
-						player.getInventory().addItem(new ItemStack(Material.IRON_SPADE));
-						player.openInventory(plugin.getInventoryManager().getShopInv());
-						pointshop.managers.ScoreManager.removeScore(player, 40);
-						break; // We break outside of the statement here so we
-								// can safely execute the coder under.
-					}
-				case IRON_HOE:
-					if (canBuy(player, 40)) {
-						player.closeInventory();
-						player.getInventory().addItem(new ItemStack(Material.IRON_HOE));
-						player.openInventory(plugin.getInventoryManager().getShopInv());
-						pointshop.managers.ScoreManager.removeScore(player, 40);
-						break; // We break outside of the statement here so we
-								// can safely execute the coder under.
-					}
-
-					break;
-				default:
-					break;
-
 				}
 			}
 		}
